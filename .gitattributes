@@ -1,0 +1,1 @@
+assets/maps/gnu_campus_stage_D_full_usd/usd/components/*.usd filter=lfs diff=lfs merge=lfs -text

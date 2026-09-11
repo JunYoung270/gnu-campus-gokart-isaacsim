@@ -1,0 +1,122 @@
+physics_settings:
+  time_steps_per_second: 60
+  solver_position_iterations: 8
+  solver_velocity_iterations: 2
+  enable_vehicle_context: true
+
+graphics_settings:
+  render_resolution: [2560, 1440]
+  enable_DLSS_FPS_Multiplier_x2: false
+  disable_shadows: false
+  disable_ambient_occlusion: true
+  disable_reflections: true
+
+user_interface:
+  viewport_mode: true
+  split_screen: false
+
+map_server:
+  enabled: false
+  resolution: 0.05
+
+network_setup:
+  ros2_domain_id: 0
+  network_interface: "lo"
+  ros2_cmd_timeout_s: 0.3
+  rmw_implementation: "rmw_fastrtps_cpp"
+  # Physical-speed governor for direct actuator control.
+  ros2_max_speed_m_s: 16.6666666667  # 60 km/h
+
+control_settings:
+  ros2_command_mode: "actuator"
+  actuator_topic_suffix: "/actuator_cmd"
+  # A lost/stale ROS command must stop the kart instead of letting it coast.
+  actuator_failsafe_brake: 1.0
+  brake_priority_threshold: 0.05
+  # Initial MOZA validation is intentionally torque-limited. Raise only after
+  # pedal polarity, braking and steering have passed the low-speed GUI gate.
+  actuator_throttle_scale: 0.15
+  # Hold only near standstill with both pedals released. A live pedal command
+  # remains visible separately from the safety-adjusted output in the HUD.
+  stationary_hold_brake: 1.0
+  stationary_hold_max_vehicle_speed_m_s: 0.2
+  # Above 60 km/h, cut throttle and apply a moderate governor brake.
+  actuator_overspeed_brake: 0.25
+
+environment:
+  asset: "assets/maps/gnu_campus_stage_D_full_usd/usd/gnu_campus_drivable.usda"
+  scale: [1.0, 1.0, 1.0]
+  rotation_euler: [0.0, 0.0, 0.0]
+  translation: [0.0, 0.0, 0.0]
+  frictions:
+    - name: "TirePhysicsMaterial"
+      dynamic_friction: 1.0
+      static_friction: 1.0
+    - name: "AsphaltPhysicsMaterial"
+      dynamic_friction: 0.7
+      static_friction: 0.9
+    - name: "GrassPhysicsMaterial"
+      dynamic_friction: 0.4
+      static_friction: 0.6
+    - name: "BuildingPhysicsMaterial"
+      dynamic_friction: 0.6
+      static_friction: 0.7
+
+vehicles:
+  - name: "Ego_Vehicle"
+    enabled: true
+    # This overlay adds the pre-authored direct accelerator/brake/steering graph.
+    asset: "assets/vehicles/kar_gokart_copilot_physx.usda"
+    topic_prefix: "/ego"
+    spawn_position: [26.242, -3.138, -0.800]
+    spawn_orientation: [0.0, 0.0, -8.0]
+    enable_camera: true
+    enable_lidar: true
+    enable_gnss: true
+
+  - name: "Opponent_Vehicle"
+    enabled: false
+    asset: "assets/vehicles/kar_gokart_copilot_physx.usda"
+    topic_prefix: "/opponent"
+    spawn_position: [24.242, -3.138, -1.900]
+    spawn_orientation: [0.0, 0.0, -8.0]
+    enable_camera: true
+    enable_lidar: true
+    enable_gnss: true
+
+topics_to_remap:
+  - "/drive"
+  - "/imu"
+  - "/odom"
+  - "/point_cloud"
+  - "/camera/left"
+  - "/camera/depth"
+  - "/camera/right"
+  - "/camera/left/camera_info"
+  - "/camera/depth/camera_info"
+  - "/camera/right/camera_info"
+
+keyboard_control_settings:
+  max_speed_m_s: 2.0
+  max_steer_rad: 0.4
+  acceleration_m_s2: 2.0
+  deceleration_m_s2: 4.0
+  steering_speed_rad_s: 3.0
+
+follow_camera:
+  distance: 4.5
+  height: 1.5
+  focus_height: 0.8
+
+gnss:
+  enabled: true
+  publish_rate_hz: 10
+  map_origin:
+    latitude: 35.1557292326198
+    longitude: 128.09376804318663
+    altitude: 68.9136798632527
+  noise:
+    horizontal_stddev_m: 0.5
+    altitude_stddev_m: 1.0
+
+semantic_segmentation: {}

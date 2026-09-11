@@ -1,0 +1,84 @@
+#usda 1.0
+(
+    defaultPrim = "kar_gokart_isaac"
+    metersPerUnit = 1
+    upAxis = "Z"
+)
+
+# Non-destructive high-speed variant for AI Copilot actuator experiments.
+# Geometry, sensors, tires, gearing, and the original graph nodes are referenced
+# from the verified vehicle. This stronger layer also owns the deterministic
+# actuator inputs and their connections; the verified speed-control USD is not
+# modified.
+def Xform "kar_gokart_isaac" (
+    prepend references = @./kar_gokart_isaac_physx.usd@</kar_gokart_isaac>
+)
+{
+    over "Geometry"
+    {
+        over "base_link"
+        {
+            float physxVehicleEngine:peakTorque = 40
+            int physxVehicle:highForwardSpeedSubStepCount = 2
+        }
+    }
+
+    over "ROS"
+    {
+        over "ROS_Ackermann_Drive"
+        {
+            def OmniGraphNode "ActuatorAccelerator"
+            {
+                custom double inputs:value = 0
+                token node:type = "omni.graph.nodes.ConstantDouble"
+                int node:typeVersion = 1
+            }
+
+            def OmniGraphNode "ActuatorBrake"
+            {
+                custom double inputs:value = 0
+                token node:type = "omni.graph.nodes.ConstantDouble"
+                int node:typeVersion = 1
+            }
+
+            def OmniGraphNode "ActuatorSteering"
+            {
+                custom double inputs:value = 0
+                token node:type = "omni.graph.nodes.ConstantDouble"
+                int node:typeVersion = 1
+            }
+
+            # Preserve the verified steering normalization and sign convention:
+            # ActuatorSteering -> divide -> clamp -> negate -> steer writer.
+            over "divide"
+            {
+                custom token inputs:a
+                token inputs:a.connect = </kar_gokart_isaac/ROS/ROS_Ackermann_Drive/ActuatorSteering.inputs:value>
+            }
+
+            over "write_prim_attribute"
+            {
+                custom uint inputs:execIn
+                uint inputs:execIn.connect = </kar_gokart_isaac/ROS/ROS_Ackermann_Drive/on_playback_tick.outputs:tick>
+                custom token inputs:value
+                token inputs:value.connect = </kar_gokart_isaac/ROS/ROS_Ackermann_Drive/negate.outputs:output>
+            }
+
+            over "write_prim_attribute_01"
+            {
+                custom uint inputs:execIn
+                uint inputs:execIn.connect = </kar_gokart_isaac/ROS/ROS_Ackermann_Drive/on_playback_tick.outputs:tick>
+                custom token inputs:value
+                token inputs:value.connect = </kar_gokart_isaac/ROS/ROS_Ackermann_Drive/ActuatorAccelerator.inputs:value>
+            }
+
+            over "write_prim_attribute_02"
+            {
+                custom uint inputs:execIn
+                uint inputs:execIn.connect = </kar_gokart_isaac/ROS/ROS_Ackermann_Drive/on_playback_tick.outputs:tick>
+                custom token inputs:value
+                token inputs:value.connect = </kar_gokart_isaac/ROS/ROS_Ackermann_Drive/ActuatorBrake.inputs:value>
+            }
+        }
+    }
+}

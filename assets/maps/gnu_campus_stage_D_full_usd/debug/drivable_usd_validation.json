@@ -1,0 +1,467 @@
+{
+  "stage": "/workspace/stage_d/usd/gnu_campus_drivable.usda",
+  "default_prim": "/World",
+  "up_axis": "Z",
+  "meters_per_unit": 1.0,
+  "axis_correction": "RotateX(+90deg): (E,U,-N) -> (E,N,U)",
+  "collision_components": {
+    "terrain_collision_source": {
+      "mesh_count": 1,
+      "usd_bbox_enu_m": [
+        [
+          -105.0,
+          -215.0,
+          -10.177082061767589
+        ],
+        [
+          325.0,
+          45.00000000000001,
+          17.93511581420903
+        ]
+      ],
+      "expected_bbox_enu_m": [
+        [
+          -105.0,
+          -215.0,
+          -10.177082061767578
+        ],
+        [
+          325.0,
+          45.0,
+          17.935115814208984
+        ]
+      ],
+      "max_abs_error_m": 4.618527782440651e-14,
+      "physics_material": "GrassPhysicsMaterial"
+    },
+    "road_collision_source": {
+      "mesh_count": 1,
+      "usd_bbox_enu_m": [
+        [
+          -105.0,
+          -215.0,
+          -10.139299392700206
+        ],
+        [
+          325.0,
+          45.0,
+          8.065463066101122
+        ]
+      ],
+      "expected_bbox_enu_m": [
+        [
+          -105.0,
+          -215.0,
+          -10.139299392700195
+        ],
+        [
+          325.0,
+          45.0,
+          8.065463066101074
+        ]
+      ],
+      "max_abs_error_m": 4.796163466380676e-14,
+      "physics_material": "AsphaltPhysicsMaterial"
+    },
+    "buildings_collision_source": {
+      "mesh_count": 27,
+      "usd_bbox_enu_m": [
+        [
+          -105.0,
+          -215.0,
+          -9.422984123229991
+        ],
+        [
+          325.0,
+          45.00000000000001,
+          18.05964851379399
+        ]
+      ],
+      "expected_bbox_enu_m": [
+        [
+          -105.0,
+          -215.0,
+          -9.42298412322998
+        ],
+        [
+          325.0,
+          45.0,
+          18.059648513793945
+        ]
+      ],
+      "max_abs_error_m": 4.618527782440651e-14,
+      "physics_material": "BuildingPhysicsMaterial"
+    }
+  },
+  "collision_mesh_count": 29,
+  "collision_meshes": [
+    {
+      "path": "/World/GNU_Campus/Collision/Terrain/terrain_collision_source",
+      "group": "terrain_collision_source",
+      "collision_api": true,
+      "mesh_collision_api": true,
+      "physx_collision_api": true,
+      "approximation": "none",
+      "material_targets": [
+        "/World/GNU_Campus/PhysicsMaterials/GrassPhysicsMaterial"
+      ],
+      "rigid_body_api": false
+    },
+    {
+      "path": "/World/GNU_Campus/Collision/Road/road_collision_source",
+      "group": "road_collision_source",
+      "collision_api": true,
+      "mesh_collision_api": true,
+      "physx_collision_api": true,
+      "approximation": "none",
+      "material_targets": [
+        "/World/GNU_Campus/PhysicsMaterials/AsphaltPhysicsMaterial"
+      ],
+      "rigid_body_api": false
+    },
+    {
+      "path": "/World/GNU_Campus/Collision/Buildings/building_collision_115467019_0/building_collision_115467019_0",
+      "group": "buildings_collision_source",
+      "collision_api": true,
+      "mesh_collision_api": true,
+      "physx_collision_api": true,
+      "approximation": "none",
+      "material_targets": [
+        "/World/GNU_Campus/PhysicsMaterials/BuildingPhysicsMaterial"
+      ],
+      "rigid_body_api": false
+    },
+    {
+      "path": "/World/GNU_Campus/Collision/Buildings/building_collision_115467368_0/building_collision_115467368_0",
+      "group": "buildings_collision_source",
+      "collision_api": true,
+      "mesh_collision_api": true,
+      "physx_collision_api": true,
+      "approximation": "none",
+      "material_targets": [
+        "/World/GNU_Campus/PhysicsMaterials/BuildingPhysicsMaterial"
+      ],
+      "rigid_body_api": false
+    },
+    {
+      "path": "/World/GNU_Campus/Collision/Buildings/building_collision_115467479_0/building_collision_115467479_0",
+      "group": "buildings_collision_source",
+      "collision_api": true,
+      "mesh_collision_api": true,
+      "physx_collision_api": true,
+      "approximation": "none",
+      "material_targets": [
+        "/World/GNU_Campus/PhysicsMaterials/BuildingPhysicsMaterial"
+      ],
+      "rigid_body_api": false
+    },
+    {
+      "path": "/World/GNU_Campus/Collision/Buildings/building_collision_115467844_0/building_collision_115467844_0",
+      "group": "buildings_collision_source",
+      "collision_api": true,
+      "mesh_collision_api": true,
+      "physx_collision_api": true,
+      "approximation": "none",
+      "material_targets": [
+        "/World/GNU_Campus/PhysicsMaterials/BuildingPhysicsMaterial"
+      ],
+      "rigid_body_api": false
+    },
+    {
+      "path": "/World/GNU_Campus/Collision/Buildings/building_collision_115469129_0/building_collision_115469129_0",
+      "group": "buildings_collision_source",
+      "collision_api": true,
+      "mesh_collision_api": true,
+      "physx_collision_api": true,
+      "approximation": "none",
+      "material_targets": [
+        "/World/GNU_Campus/PhysicsMaterials/BuildingPhysicsMaterial"
+      ],
+      "rigid_body_api": false
+    },
+    {
+      "path": "/World/GNU_Campus/Collision/Buildings/building_collision_115469130_0/building_collision_115469130_0",
+      "group": "buildings_collision_source",
+      "collision_api": true,
+      "mesh_collision_api": true,
+      "physx_collision_api": true,
+      "approximation": "none",
+      "material_targets": [
+        "/World/GNU_Campus/PhysicsMaterials/BuildingPhysicsMaterial"
+      ],
+      "rigid_body_api": false
+    },
+    {
+      "path": "/World/GNU_Campus/Collision/Buildings/building_collision_115609721_0/building_collision_115609721_0",
+      "group": "buildings_collision_source",
+      "collision_api": true,
+      "mesh_collision_api": true,
+      "physx_collision_api": true,
+      "approximation": "none",
+      "material_targets": [
+        "/World/GNU_Campus/PhysicsMaterials/BuildingPhysicsMaterial"
+      ],
+      "rigid_body_api": false
+    },
+    {
+      "path": "/World/GNU_Campus/Collision/Buildings/building_collision_115610296_0/building_collision_115610296_0",
+      "group": "buildings_collision_source",
+      "collision_api": true,
+      "mesh_collision_api": true,
+      "physx_collision_api": true,
+      "approximation": "none",
+      "material_targets": [
+        "/World/GNU_Campus/PhysicsMaterials/BuildingPhysicsMaterial"
+      ],
+      "rigid_body_api": false
+    },
+    {
+      "path": "/World/GNU_Campus/Collision/Buildings/building_collision_115699811_0/building_collision_115699811_0",
+      "group": "buildings_collision_source",
+      "collision_api": true,
+      "mesh_collision_api": true,
+      "physx_collision_api": true,
+      "approximation": "none",
+      "material_targets": [
+        "/World/GNU_Campus/PhysicsMaterials/BuildingPhysicsMaterial"
+      ],
+      "rigid_body_api": false
+    },
+    {
+      "path": "/World/GNU_Campus/Collision/Buildings/building_collision_115699813_0/building_collision_115699813_0",
+      "group": "buildings_collision_source",
+      "collision_api": true,
+      "mesh_collision_api": true,
+      "physx_collision_api": true,
+      "approximation": "none",
+      "material_targets": [
+        "/World/GNU_Campus/PhysicsMaterials/BuildingPhysicsMaterial"
+      ],
+      "rigid_body_api": false
+    },
+    {
+      "path": "/World/GNU_Campus/Collision/Buildings/building_collision_115699814_0/building_collision_115699814_0",
+      "group": "buildings_collision_source",
+      "collision_api": true,
+      "mesh_collision_api": true,
+      "physx_collision_api": true,
+      "approximation": "none",
+      "material_targets": [
+        "/World/GNU_Campus/PhysicsMaterials/BuildingPhysicsMaterial"
+      ],
+      "rigid_body_api": false
+    },
+    {
+      "path": "/World/GNU_Campus/Collision/Buildings/building_collision_115699816_0/building_collision_115699816_0",
+      "group": "buildings_collision_source",
+      "collision_api": true,
+      "mesh_collision_api": true,
+      "physx_collision_api": true,
+      "approximation": "none",
+      "material_targets": [
+        "/World/GNU_Campus/PhysicsMaterials/BuildingPhysicsMaterial"
+      ],
+      "rigid_body_api": false
+    },
+    {
+      "path": "/World/GNU_Campus/Collision/Buildings/building_collision_115699817_0/building_collision_115699817_0",
+      "group": "buildings_collision_source",
+      "collision_api": true,
+      "mesh_collision_api": true,
+      "physx_collision_api": true,
+      "approximation": "none",
+      "material_targets": [
+        "/World/GNU_Campus/PhysicsMaterials/BuildingPhysicsMaterial"
+      ],
+      "rigid_body_api": false
+    },
+    {
+      "path": "/World/GNU_Campus/Collision/Buildings/building_collision_115699818_0/building_collision_115699818_0",
+      "group": "buildings_collision_source",
+      "collision_api": true,
+      "mesh_collision_api": true,
+      "physx_collision_api": true,
+      "approximation": "none",
+      "material_targets": [
+        "/World/GNU_Campus/PhysicsMaterials/BuildingPhysicsMaterial"
+      ],
+      "rigid_body_api": false
+    },
+    {
+      "path": "/World/GNU_Campus/Collision/Buildings/building_collision_115699819_0/building_collision_115699819_0",
+      "group": "buildings_collision_source",
+      "collision_api": true,
+      "mesh_collision_api": true,
+      "physx_collision_api": true,
+      "approximation": "none",
+      "material_targets": [
+        "/World/GNU_Campus/PhysicsMaterials/BuildingPhysicsMaterial"
+      ],
+      "rigid_body_api": false
+    },
+    {
+      "path": "/World/GNU_Campus/Collision/Buildings/building_collision_115857176_0/building_collision_115857176_0",
+      "group": "buildings_collision_source",
+      "collision_api": true,
+      "mesh_collision_api": true,
+      "physx_collision_api": true,
+      "approximation": "none",
+      "material_targets": [
+        "/World/GNU_Campus/PhysicsMaterials/BuildingPhysicsMaterial"
+      ],
+      "rigid_body_api": false
+    },
+    {
+      "path": "/World/GNU_Campus/Collision/Buildings/building_collision_115857253_0/building_collision_115857253_0",
+      "group": "buildings_collision_source",
+      "collision_api": true,
+      "mesh_collision_api": true,
+      "physx_collision_api": true,
+      "approximation": "none",
+      "material_targets": [
+        "/World/GNU_Campus/PhysicsMaterials/BuildingPhysicsMaterial"
+      ],
+      "rigid_body_api": false
+    },
+    {
+      "path": "/World/GNU_Campus/Collision/Buildings/building_collision_115857255_0/building_collision_115857255_0",
+      "group": "buildings_collision_source",
+      "collision_api": true,
+      "mesh_collision_api": true,
+      "physx_collision_api": true,
+      "approximation": "none",
+      "material_targets": [
+        "/World/GNU_Campus/PhysicsMaterials/BuildingPhysicsMaterial"
+      ],
+      "rigid_body_api": false
+    },
+    {
+      "path": "/World/GNU_Campus/Collision/Buildings/building_collision_115857259_0/building_collision_115857259_0",
+      "group": "buildings_collision_source",
+      "collision_api": true,
+      "mesh_collision_api": true,
+      "physx_collision_api": true,
+      "approximation": "none",
+      "material_targets": [
+        "/World/GNU_Campus/PhysicsMaterials/BuildingPhysicsMaterial"
+      ],
+      "rigid_body_api": false
+    },
+    {
+      "path": "/World/GNU_Campus/Collision/Buildings/building_collision_524951692_0/building_collision_524951692_0",
+      "group": "buildings_collision_source",
+      "collision_api": true,
+      "mesh_collision_api": true,
+      "physx_collision_api": true,
+      "approximation": "none",
+      "material_targets": [
+        "/World/GNU_Campus/PhysicsMaterials/BuildingPhysicsMaterial"
+      ],
+      "rigid_body_api": false
+    },
+    {
+      "path": "/World/GNU_Campus/Collision/Buildings/building_collision_1021680219_0/building_collision_1021680219_0",
+      "group": "buildings_collision_source",
+      "collision_api": true,
+      "mesh_collision_api": true,
+      "physx_collision_api": true,
+      "approximation": "none",
+      "material_targets": [
+        "/World/GNU_Campus/PhysicsMaterials/BuildingPhysicsMaterial"
+      ],
+      "rigid_body_api": false
+    },
+    {
+      "path": "/World/GNU_Campus/Collision/Buildings/building_collision_1024125711_0/building_collision_1024125711_0",
+      "group": "buildings_collision_source",
+      "collision_api": true,
+      "mesh_collision_api": true,
+      "physx_collision_api": true,
+      "approximation": "none",
+      "material_targets": [
+        "/World/GNU_Campus/PhysicsMaterials/BuildingPhysicsMaterial"
+      ],
+      "rigid_body_api": false
+    },
+    {
+      "path": "/World/GNU_Campus/Collision/Buildings/building_collision_1024125722_0/building_collision_1024125722_0",
+      "group": "buildings_collision_source",
+      "collision_api": true,
+      "mesh_collision_api": true,
+      "physx_collision_api": true,
+      "approximation": "none",
+      "material_targets": [
+        "/World/GNU_Campus/PhysicsMaterials/BuildingPhysicsMaterial"
+      ],
+      "rigid_body_api": false
+    },
+    {
+      "path": "/World/GNU_Campus/Collision/Buildings/building_collision_1024125730_0/building_collision_1024125730_0",
+      "group": "buildings_collision_source",
+      "collision_api": true,
+      "mesh_collision_api": true,
+      "physx_collision_api": true,
+      "approximation": "none",
+      "material_targets": [
+        "/World/GNU_Campus/PhysicsMaterials/BuildingPhysicsMaterial"
+      ],
+      "rigid_body_api": false
+    },
+    {
+      "path": "/World/GNU_Campus/Collision/Buildings/building_collision_1040566527_0/building_collision_1040566527_0",
+      "group": "buildings_collision_source",
+      "collision_api": true,
+      "mesh_collision_api": true,
+      "physx_collision_api": true,
+      "approximation": "none",
+      "material_targets": [
+        "/World/GNU_Campus/PhysicsMaterials/BuildingPhysicsMaterial"
+      ],
+      "rigid_body_api": false
+    },
+    {
+      "path": "/World/GNU_Campus/Collision/Buildings/building_collision_1040566530_0/building_collision_1040566530_0",
+      "group": "buildings_collision_source",
+      "collision_api": true,
+      "mesh_collision_api": true,
+      "physx_collision_api": true,
+      "approximation": "none",
+      "material_targets": [
+        "/World/GNU_Campus/PhysicsMaterials/BuildingPhysicsMaterial"
+      ],
+      "rigid_body_api": false
+    },
+    {
+      "path": "/World/GNU_Campus/Collision/Buildings/building_collision_1040566531_0/building_collision_1040566531_0",
+      "group": "buildings_collision_source",
+      "collision_api": true,
+      "mesh_collision_api": true,
+      "physx_collision_api": true,
+      "approximation": "none",
+      "material_targets": [
+        "/World/GNU_Campus/PhysicsMaterials/BuildingPhysicsMaterial"
+      ],
+      "rigid_body_api": false
+    }
+  ],
+  "physics_materials": {
+    "GrassPhysicsMaterial": {
+      "dynamic_friction": 0.4000000059604645,
+      "static_friction": 0.6000000238418579,
+      "restitution": 0.0
+    },
+    "AsphaltPhysicsMaterial": {
+      "dynamic_friction": 0.699999988079071,
+      "static_friction": 0.8999999761581421,
+      "restitution": 0.0
+    },
+    "BuildingPhysicsMaterial": {
+      "dynamic_friction": 0.6000000238418579,
+      "static_friction": 0.699999988079071,
+      "restitution": 0.0
+    }
+  },
+  "physics_scenes": [],
+  "maximum_collision_bbox_error_m": 4.796163466380676e-14,
+  "pass": true
+}

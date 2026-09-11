@@ -1,0 +1,36 @@
+moza_input_node:
+  ros__parameters:
+    device_path: /dev/input/moza-js
+    steering_axis: 0
+    steering_min: -32767
+    steering_center: -144
+    steering_max: 32767
+    steering_deadzone: 300
+    throttle_axis: 2
+    throttle_min: -32767
+    throttle_max: 32767
+    brake_axis: 5
+    brake_min: -32767
+    brake_max: 32767
+    publish_rate: 50.0
+    axis_count: 8
+    button_count: 32
+    reconnect_interval: 1.0
+
+shared_control_node:
+  ros__parameters:
+    steering_axis: 0
+    throttle_axis: 2
+    brake_axis: 5
+    publish_rate: 50.0
+    command_timeout: 0.25
+    max_speed: 0.5
+    max_steering: 0.2617993877991494  # 15 degrees, radians
+
+isaac_adapter_node:
+  ros__parameters:
+    publish_rate: 50.0
+    command_timeout: 0.25
+    max_speed: 0.5
+    max_steering: 0.2617993877991494  # 15 degrees, radians
+    output_topic: /ego/drive

@@ -1,0 +1,144 @@
+{
+  "stage": "/workspace/stage_d/usd/gnu_campus_visual.usda",
+  "renderer": "RaytracedLighting",
+  "captures": [
+    {
+      "file": "/workspace/stage_d/validation/visual_overview.png",
+      "shape": [
+        582,
+        963,
+        3
+      ],
+      "mean_rgb": [
+        5.71156680333865,
+        7.7757294822522685,
+        9.329422302155706
+      ],
+      "std_rgb": [
+        22.116965898483787,
+        31.46081052572948,
+        38.9731439260706
+      ],
+      "eye_enu_m": [
+        120,
+        -165,
+        115
+      ],
+      "target_enu_m": [
+        5,
+        -22,
+        0
+      ],
+      "focal_length_mm": 28.0,
+      "capture_method": "x11_crop_of_live_isaac_viewport",
+      "x11_window_id": "0x5800009",
+      "scene_crop_std": 0.04433311147299938,
+      "scene_crop_nonblack_fraction": 0.0,
+      "pass": false
+    },
+    {
+      "file": "/workspace/stage_d/validation/visual_top_view.png",
+      "shape": [
+        582,
+        963,
+        3
+      ],
+      "mean_rgb": [
+        5.71156680333865,
+        7.7757294822522685,
+        9.329422302155706
+      ],
+      "std_rgb": [
+        22.116965898483787,
+        31.46081052572948,
+        38.9731439260706
+      ],
+      "eye_enu_m": [
+        5,
+        -22,
+        190
+      ],
+      "target_enu_m": [
+        5,
+        -22,
+        0
+      ],
+      "focal_length_mm": 32.0,
+      "capture_method": "x11_crop_of_live_isaac_viewport",
+      "x11_window_id": "0x5800009",
+      "scene_crop_std": 0.04433311147299938,
+      "scene_crop_nonblack_fraction": 0.0,
+      "pass": false
+    },
+    {
+      "file": "/workspace/stage_d/validation/axis_validation.png",
+      "shape": [
+        582,
+        963,
+        3
+      ],
+      "mean_rgb": [
+        5.71156680333865,
+        7.7757294822522685,
+        9.329422302155706
+      ],
+      "std_rgb": [
+        22.116965898483787,
+        31.46081052572948,
+        38.9731439260706
+      ],
+      "eye_enu_m": [
+        24,
+        -28,
+        20
+      ],
+      "target_enu_m": [
+        3,
+        3,
+        4
+      ],
+      "focal_length_mm": 35.0,
+      "capture_method": "x11_crop_of_live_isaac_viewport",
+      "x11_window_id": "0x5800009",
+      "scene_crop_std": 0.04433311147299938,
+      "scene_crop_nonblack_fraction": 0.0,
+      "pass": false
+    },
+    {
+      "file": "/workspace/stage_d/validation/scale_validation.png",
+      "shape": [
+        582,
+        963,
+        3
+      ],
+      "mean_rgb": [
+        5.71156680333865,
+        7.7757294822522685,
+        9.329422302155706
+      ],
+      "std_rgb": [
+        22.116965898483787,
+        31.46081052572948,
+        38.9731439260706
+      ],
+      "eye_enu_m": [
+        11,
+        -5,
+        10
+      ],
+      "target_enu_m": [
+        3,
+        3,
+        6
+      ],
+      "focal_length_mm": 48.0,
+      "capture_method": "x11_crop_of_live_isaac_viewport",
+      "x11_window_id": "0x5800009",
+      "scene_crop_std": 0.04433311147299938,
+      "scene_crop_nonblack_fraction": 0.0,
+      "pass": false
+    }
+  ],
+  "pass": false,
+  "failure_rule": "scene crop std > 2 and nonblack pixel fraction > 0.01"
+}

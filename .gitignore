@@ -1,0 +1,13 @@
+data/
+drive_bridge.log
+gnss_bridge.log
+__pycache__/
+*.py[cod]
+
+# Local map sources and generated intermediates. Keep these out of GitHub.
+assets/maps/gnu_campus_stage_B_handoff/
+assets/maps/gnu_campus_stage_B_full_handoff/
+assets/maps/gnu_campus_stage_C_sample/
+assets/maps/gnu_campus_stage_C_full/
+assets/maps/gnu_campus_stage_full/
+assets/maps/gnu_campus_stage_full_pipeline/

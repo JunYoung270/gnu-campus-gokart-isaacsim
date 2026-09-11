@@ -1,0 +1,144 @@
+{
+  "assets": [
+    {
+      "source": "/workspace/stage_c/mesh/terrain_visual.glb",
+      "destination": "/workspace/stage_d/usd/components/terrain_visual.usd",
+      "source_bytes": 111856320,
+      "destination_bytes": 234932468,
+      "up_axis": "Z",
+      "meters_per_unit": 1.0,
+      "world_bbox_min": [
+        -105.0,
+        -10.194775581359863,
+        -45.0
+      ],
+      "world_bbox_max": [
+        325.0,
+        17.93807029724121,
+        215.0
+      ],
+      "mesh_prim_count": 1,
+      "default_prim": "/World"
+    },
+    {
+      "source": "/workspace/stage_c/mesh/road_visual.glb",
+      "destination": "/workspace/stage_d/usd/components/road_visual.usd",
+      "source_bytes": 27660184,
+      "destination_bytes": 57837271,
+      "up_axis": "Z",
+      "meters_per_unit": 1.0,
+      "world_bbox_min": [
+        -105.0,
+        -10.145285606384277,
+        -45.0
+      ],
+      "world_bbox_max": [
+        325.0,
+        7.941303253173828,
+        215.0
+      ],
+      "mesh_prim_count": 1,
+      "default_prim": "/World"
+    },
+    {
+      "source": "/workspace/stage_c/mesh/buildings_visual.glb",
+      "destination": "/workspace/stage_d/usd/components/buildings_visual.usd",
+      "source_bytes": 38544,
+      "destination_bytes": 29322,
+      "up_axis": "Z",
+      "meters_per_unit": 1.0,
+      "world_bbox_min": [
+        -105.0,
+        -9.42298412322998,
+        -45.0
+      ],
+      "world_bbox_max": [
+        325.0,
+        18.059648513793945,
+        215.0
+      ],
+      "mesh_prim_count": 27,
+      "default_prim": "/World"
+    },
+    {
+      "source": "/workspace/stage_c/mesh/sidewalk_visual.glb",
+      "destination": "/workspace/stage_d/usd/components/sidewalk_visual.usd",
+      "source_bytes": 3066000,
+      "destination_bytes": 6263852,
+      "up_axis": "Z",
+      "meters_per_unit": 1.0,
+      "world_bbox_min": [
+        -80.80000305175781,
+        -10.04235553741455,
+        -45.0
+      ],
+      "world_bbox_max": [
+        325.0,
+        7.676347732543945,
+        215.0
+      ],
+      "mesh_prim_count": 1,
+      "default_prim": "/World"
+    },
+    {
+      "source": "/workspace/stage_c/mesh/terrain_collision_source.glb",
+      "destination": "/workspace/stage_d/usd/components/terrain_collision_source.usd",
+      "source_bytes": 21274212,
+      "destination_bytes": 44538570,
+      "up_axis": "Z",
+      "meters_per_unit": 1.0,
+      "world_bbox_min": [
+        -105.0,
+        -10.177082061767578,
+        -45.0
+      ],
+      "world_bbox_max": [
+        325.0,
+        17.935115814208984,
+        215.0
+      ],
+      "mesh_prim_count": 1,
+      "default_prim": "/World"
+    },
+    {
+      "source": "/workspace/stage_c/mesh/road_collision_source.glb",
+      "destination": "/workspace/stage_d/usd/components/road_collision_source.usd",
+      "source_bytes": 6989184,
+      "destination_bytes": 14546204,
+      "up_axis": "Z",
+      "meters_per_unit": 1.0,
+      "world_bbox_min": [
+        -105.0,
+        -10.139299392700195,
+        -45.0
+      ],
+      "world_bbox_max": [
+        325.0,
+        8.065463066101074,
+        215.0
+      ],
+      "mesh_prim_count": 1,
+      "default_prim": "/World"
+    },
+    {
+      "source": "/workspace/stage_c/mesh/buildings_collision_source.glb",
+      "destination": "/workspace/stage_d/usd/components/buildings_collision_source.usd",
+      "source_bytes": 36580,
+      "destination_bytes": 27398,
+      "up_axis": "Z",
+      "meters_per_unit": 1.0,
+      "world_bbox_min": [
+        -105.0,
+        -9.42298412322998,
+        -45.0
+      ],
+      "world_bbox_max": [
+        325.0,
+        18.059648513793945,
+        215.0
+      ],
+      "mesh_prim_count": 27,
+      "default_prim": "/World"
+    }
+  ]
+}

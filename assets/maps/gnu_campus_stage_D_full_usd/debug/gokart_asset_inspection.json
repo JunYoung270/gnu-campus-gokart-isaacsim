@@ -1,0 +1,41 @@
+{
+  "vehicle": "/workspace/repo/assets/vehicles/kar_gokart_isaac_physx.usd",
+  "default_prim": "/kar_gokart_isaac",
+  "up_axis": "Z",
+  "meters_per_unit": 1.0,
+  "bbox_local_m": [
+    [
+      -0.24335099756717682,
+      -0.46563079953193665,
+      -0.000820457935333252
+    ],
+    [
+      1.5966490507125854,
+      0.46563079953193665,
+      1.4413161313912246
+    ]
+  ],
+  "rigid_bodies": [
+    "/kar_gokart_isaac/Geometry/base_link"
+  ],
+  "collision_prims": [
+    "/kar_gokart_isaac/Geometry/base_link/vehicle_body_link/box",
+    "/kar_gokart_isaac/Geometry/base_link/vehicle_body_link/box_1"
+  ],
+  "wheel_named_prims": [
+    "/kar_gokart_isaac/Geometry/base_link/rear_axle_link/rear_left_wheel_link",
+    "/kar_gokart_isaac/Geometry/base_link/rear_axle_link/rear_right_wheel_link",
+    "/kar_gokart_isaac/Geometry/base_link/front_axle_link/front_left_steering_link/front_left_wheel_link",
+    "/kar_gokart_isaac/Geometry/base_link/front_axle_link/front_right_steering_link/front_right_wheel_link",
+    "/kar_gokart_isaac/Geometry/base_link/LeftWheel1References",
+    "/kar_gokart_isaac/Geometry/base_link/LeftWheel1References/front_left_wheel_visual",
+    "/kar_gokart_isaac/Geometry/base_link/RightWheel1References",
+    "/kar_gokart_isaac/Geometry/base_link/RightWheel1References/front_right_wheel_visual",
+    "/kar_gokart_isaac/Geometry/base_link/LeftWheel2References",
+    "/kar_gokart_isaac/Geometry/base_link/LeftWheel2References/rear_left_wheel_visual",
+    "/kar_gokart_isaac/Geometry/base_link/RightWheel2References",
+    "/kar_gokart_isaac/Geometry/base_link/RightWheel2References/rear_right_wheel_visual",
+    "/kar_gokart_isaac/WizardSharedVehicleData/SlickTireFrictionTable",
+    "/kar_gokart_isaac/WizardSharedVehicleData/VehicleWheelCollisionGroup"
+  ]
+}

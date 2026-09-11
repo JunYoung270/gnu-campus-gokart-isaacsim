@@ -1,0 +1,164 @@
+#usda 1.0
+(
+    "GNU Campus full driven-area Stage D visual-only stage; ENU metres"
+    defaultPrim = "World"
+    metersPerUnit = 1
+    upAxis = "Z"
+)
+
+def Xform "World"
+{
+    def Xform "GNU_Campus" (
+        customData = {
+            dictionary gnuCampus = {
+                string axis = "X East, Y North, Z Up"
+                string coordinateSystem = "right-handed ENU"
+                string unit = "metre"
+            }
+        }
+    )
+    {
+        def Scope "Visual"
+        {
+            def Xform "Terrain" (
+                customData = {
+                    dictionary gnuCampus = {
+                        string axisCorrection = "RotateX(+90deg)"
+                        string sourceAsset = "terrain_visual.glb"
+                    }
+                }
+                prepend references = @components/terrain_visual.usd@</World>
+            )
+            {
+                float xformOp:rotateX:gltfPayloadToENU = 90
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale", "xformOp:rotateX:gltfPayloadToENU"]
+            }
+
+            def Xform "Road" (
+                customData = {
+                    dictionary gnuCampus = {
+                        string axisCorrection = "RotateX(+90deg)"
+                        string sourceAsset = "road_visual.glb"
+                    }
+                }
+                prepend references = @components/road_visual.usd@</World>
+            )
+            {
+                float xformOp:rotateX:gltfPayloadToENU = 90
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale", "xformOp:rotateX:gltfPayloadToENU"]
+            }
+
+            def Xform "Buildings" (
+                customData = {
+                    dictionary gnuCampus = {
+                        string axisCorrection = "RotateX(+90deg)"
+                        string sourceAsset = "buildings_visual.glb"
+                    }
+                }
+                prepend references = @components/buildings_visual.usd@</World>
+            )
+            {
+                float xformOp:rotateX:gltfPayloadToENU = 90
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale", "xformOp:rotateX:gltfPayloadToENU"]
+            }
+
+            def Xform "Sidewalk" (
+                customData = {
+                    dictionary gnuCampus = {
+                        string axisCorrection = "RotateX(+90deg)"
+                        string sourceAsset = "sidewalk_visual.glb"
+                    }
+                }
+                prepend references = @components/sidewalk_visual.usd@</World>
+            )
+            {
+                float xformOp:rotateX:gltfPayloadToENU = 90
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale", "xformOp:rotateX:gltfPayloadToENU"]
+            }
+        }
+
+        def Scope "Validation" (
+            customData = {
+                dictionary gnuCampus = {
+                    bool visualOnly = 1
+                }
+            }
+        )
+        {
+            def Cube "Origin" (
+                customData = {
+                    dictionary gnuCampus = {
+                        string validationRole = "origin"
+                    }
+                }
+            )
+            {
+                color3f[] primvars:displayColor = [(1, 1, 1)]
+                double size = 1
+                float3 xformOp:scale = (0.4, 0.4, 0.4)
+                double3 xformOp:translate = (0, 0, 0)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:scale"]
+            }
+
+            def Cube "EastAxis" (
+                customData = {
+                    dictionary gnuCampus = {
+                        string validationRole = "east +10m"
+                    }
+                }
+            )
+            {
+                color3f[] primvars:displayColor = [(1, 0, 0)]
+                double size = 1
+                float3 xformOp:scale = (10, 0.12, 0.12)
+                double3 xformOp:translate = (5, 0, 0)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:scale"]
+            }
+
+            def Cube "NorthAxis" (
+                customData = {
+                    dictionary gnuCampus = {
+                        string validationRole = "north +10m"
+                    }
+                }
+            )
+            {
+                color3f[] primvars:displayColor = [(0, 1, 0)]
+                double size = 1
+                float3 xformOp:scale = (0.12, 10, 0.12)
+                double3 xformOp:translate = (0, 5, 0)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:scale"]
+            }
+
+            def Cube "UpAxis" (
+                customData = {
+                    dictionary gnuCampus = {
+                        string validationRole = "up +10m"
+                    }
+                }
+            )
+            {
+                color3f[] primvars:displayColor = [(0, 0.25, 1)]
+                double size = 1
+                float3 xformOp:scale = (0.12, 0.12, 10)
+                double3 xformOp:translate = (0, 0, 5)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:scale"]
+            }
+
+            def Cube "ScaleCube1m" (
+                customData = {
+                    dictionary gnuCampus = {
+                        string validationRole = "1m cube"
+                    }
+                }
+            )
+            {
+                color3f[] primvars:displayColor = [(1, 0.8, 0)]
+                double size = 1
+                float3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (3, 3, 6)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:scale"]
+            }
+        }
+    }
+}

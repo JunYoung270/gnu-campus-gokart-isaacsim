@@ -1,0 +1,585 @@
+#usda 1.0
+(
+    "GNU Campus full-area visual plus static collision; no PhysicsScene or vehicle"
+    defaultPrim = "World"
+    metersPerUnit = 1
+    upAxis = "Z"
+)
+
+def Xform "World"
+{
+    def Xform "GNU_Campus" (
+        customData = {
+            dictionary gnuCampus = {
+                string axis = "X East, Y North, Z Up"
+                string coordinateSystem = "right-handed ENU"
+                string unit = "metre"
+            }
+        }
+    )
+    {
+        def Scope "Lighting"
+        {
+            def DomeLight "Dome"
+            {
+                float inputs:intensity = 1000
+            }
+
+            def DistantLight "Sun"
+            {
+                float inputs:angle = 0.8
+                float inputs:intensity = 3000
+                float3 xformOp:rotateXYZ = (45, -35, -30)
+                uniform token[] xformOpOrder = ["xformOp:rotateXYZ"]
+            }
+        }
+
+        def Scope "Visual"
+        {
+            def Xform "Terrain" (
+                customData = {
+                    dictionary gnuCampus = {
+                        string axisCorrection = "RotateX(+90deg)"
+                        string sourceAsset = "terrain_visual.glb"
+                    }
+                }
+                prepend references = @components/terrain_visual.usd@</World>
+            )
+            {
+                float xformOp:rotateX:gltfPayloadToENU = 90
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale", "xformOp:rotateX:gltfPayloadToENU"]
+            }
+
+            def Xform "Road" (
+                customData = {
+                    dictionary gnuCampus = {
+                        string axisCorrection = "RotateX(+90deg)"
+                        string sourceAsset = "road_visual.glb"
+                    }
+                }
+                prepend references = @components/road_visual.usd@</World>
+            )
+            {
+                float xformOp:rotateX:gltfPayloadToENU = 90
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale", "xformOp:rotateX:gltfPayloadToENU"]
+            }
+
+            def Xform "Buildings" (
+                customData = {
+                    dictionary gnuCampus = {
+                        string axisCorrection = "RotateX(+90deg)"
+                        string sourceAsset = "buildings_visual.glb"
+                    }
+                }
+                prepend references = @components/buildings_visual.usd@</World>
+            )
+            {
+                float xformOp:rotateX:gltfPayloadToENU = 90
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale", "xformOp:rotateX:gltfPayloadToENU"]
+            }
+
+            def Xform "Sidewalk" (
+                customData = {
+                    dictionary gnuCampus = {
+                        string axisCorrection = "RotateX(+90deg)"
+                        string sourceAsset = "sidewalk_visual.glb"
+                    }
+                }
+                prepend references = @components/sidewalk_visual.usd@</World>
+            )
+            {
+                float xformOp:rotateX:gltfPayloadToENU = 90
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale", "xformOp:rotateX:gltfPayloadToENU"]
+            }
+        }
+
+        def Xform "Collision" (
+            customData = {
+                dictionary gnuCampus = {
+                    bool renderHiddenCollision = 1
+                }
+            }
+        )
+        {
+            token visibility = "invisible"
+
+            def Xform "Terrain" (
+                customData = {
+                    dictionary gnuCampus = {
+                        string axisCorrection = "RotateX(+90deg)"
+                        string sourceAsset = "terrain_collision_source.glb"
+                    }
+                }
+                prepend references = @components/terrain_collision_source.usd@</World>
+            )
+            {
+                float xformOp:rotateX:gltfPayloadToENU = 90
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale", "xformOp:rotateX:gltfPayloadToENU"]
+
+                over "terrain_collision_source" (
+                    prepend apiSchemas = ["PhysicsCollisionAPI", "PhysicsMeshCollisionAPI", "PhysxCollisionAPI", "MaterialBindingAPI"]
+                )
+                {
+                    rel material:binding:physics = </World/GNU_Campus/PhysicsMaterials/GrassPhysicsMaterial> (
+                        bindMaterialAs = "weakerThanDescendants"
+                    )
+                    uniform token physics:approximation = "none"
+                    bool physics:collisionEnabled = 1
+                }
+            }
+
+            def Xform "Road" (
+                customData = {
+                    dictionary gnuCampus = {
+                        string axisCorrection = "RotateX(+90deg)"
+                        string sourceAsset = "road_collision_source.glb"
+                    }
+                }
+                prepend references = @components/road_collision_source.usd@</World>
+            )
+            {
+                float xformOp:rotateX:gltfPayloadToENU = 90
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale", "xformOp:rotateX:gltfPayloadToENU"]
+
+                over "road_collision_source" (
+                    prepend apiSchemas = ["PhysicsCollisionAPI", "PhysicsMeshCollisionAPI", "PhysxCollisionAPI", "MaterialBindingAPI"]
+                )
+                {
+                    rel material:binding:physics = </World/GNU_Campus/PhysicsMaterials/AsphaltPhysicsMaterial> (
+                        bindMaterialAs = "weakerThanDescendants"
+                    )
+                    uniform token physics:approximation = "none"
+                    bool physics:collisionEnabled = 1
+                }
+            }
+
+            def Xform "Buildings" (
+                customData = {
+                    dictionary gnuCampus = {
+                        string axisCorrection = "RotateX(+90deg)"
+                        string sourceAsset = "buildings_collision_source.glb"
+                    }
+                }
+                prepend references = @components/buildings_collision_source.usd@</World>
+            )
+            {
+                float xformOp:rotateX:gltfPayloadToENU = 90
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale", "xformOp:rotateX:gltfPayloadToENU"]
+
+                over "building_collision_115467019_0"
+                {
+                    over "building_collision_115467019_0" (
+                        prepend apiSchemas = ["PhysicsCollisionAPI", "PhysicsMeshCollisionAPI", "PhysxCollisionAPI", "MaterialBindingAPI"]
+                    )
+                    {
+                        rel material:binding:physics = </World/GNU_Campus/PhysicsMaterials/BuildingPhysicsMaterial> (
+                            bindMaterialAs = "weakerThanDescendants"
+                        )
+                        uniform token physics:approximation = "none"
+                        bool physics:collisionEnabled = 1
+                    }
+                }
+
+                over "building_collision_115467368_0"
+                {
+                    over "building_collision_115467368_0" (
+                        prepend apiSchemas = ["PhysicsCollisionAPI", "PhysicsMeshCollisionAPI", "PhysxCollisionAPI", "MaterialBindingAPI"]
+                    )
+                    {
+                        rel material:binding:physics = </World/GNU_Campus/PhysicsMaterials/BuildingPhysicsMaterial> (
+                            bindMaterialAs = "weakerThanDescendants"
+                        )
+                        uniform token physics:approximation = "none"
+                        bool physics:collisionEnabled = 1
+                    }
+                }
+
+                over "building_collision_115467479_0"
+                {
+                    over "building_collision_115467479_0" (
+                        prepend apiSchemas = ["PhysicsCollisionAPI", "PhysicsMeshCollisionAPI", "PhysxCollisionAPI", "MaterialBindingAPI"]
+                    )
+                    {
+                        rel material:binding:physics = </World/GNU_Campus/PhysicsMaterials/BuildingPhysicsMaterial> (
+                            bindMaterialAs = "weakerThanDescendants"
+                        )
+                        uniform token physics:approximation = "none"
+                        bool physics:collisionEnabled = 1
+                    }
+                }
+
+                over "building_collision_115467844_0"
+                {
+                    over "building_collision_115467844_0" (
+                        prepend apiSchemas = ["PhysicsCollisionAPI", "PhysicsMeshCollisionAPI", "PhysxCollisionAPI", "MaterialBindingAPI"]
+                    )
+                    {
+                        rel material:binding:physics = </World/GNU_Campus/PhysicsMaterials/BuildingPhysicsMaterial> (
+                            bindMaterialAs = "weakerThanDescendants"
+                        )
+                        uniform token physics:approximation = "none"
+                        bool physics:collisionEnabled = 1
+                    }
+                }
+
+                over "building_collision_115469129_0"
+                {
+                    over "building_collision_115469129_0" (
+                        prepend apiSchemas = ["PhysicsCollisionAPI", "PhysicsMeshCollisionAPI", "PhysxCollisionAPI", "MaterialBindingAPI"]
+                    )
+                    {
+                        rel material:binding:physics = </World/GNU_Campus/PhysicsMaterials/BuildingPhysicsMaterial> (
+                            bindMaterialAs = "weakerThanDescendants"
+                        )
+                        uniform token physics:approximation = "none"
+                        bool physics:collisionEnabled = 1
+                    }
+                }
+
+                over "building_collision_115469130_0"
+                {
+                    over "building_collision_115469130_0" (
+                        prepend apiSchemas = ["PhysicsCollisionAPI", "PhysicsMeshCollisionAPI", "PhysxCollisionAPI", "MaterialBindingAPI"]
+                    )
+                    {
+                        rel material:binding:physics = </World/GNU_Campus/PhysicsMaterials/BuildingPhysicsMaterial> (
+                            bindMaterialAs = "weakerThanDescendants"
+                        )
+                        uniform token physics:approximation = "none"
+                        bool physics:collisionEnabled = 1
+                    }
+                }
+
+                over "building_collision_115609721_0"
+                {
+                    over "building_collision_115609721_0" (
+                        prepend apiSchemas = ["PhysicsCollisionAPI", "PhysicsMeshCollisionAPI", "PhysxCollisionAPI", "MaterialBindingAPI"]
+                    )
+                    {
+                        rel material:binding:physics = </World/GNU_Campus/PhysicsMaterials/BuildingPhysicsMaterial> (
+                            bindMaterialAs = "weakerThanDescendants"
+                        )
+                        uniform token physics:approximation = "none"
+                        bool physics:collisionEnabled = 1
+                    }
+                }
+
+                over "building_collision_115610296_0"
+                {
+                    over "building_collision_115610296_0" (
+                        prepend apiSchemas = ["PhysicsCollisionAPI", "PhysicsMeshCollisionAPI", "PhysxCollisionAPI", "MaterialBindingAPI"]
+                    )
+                    {
+                        rel material:binding:physics = </World/GNU_Campus/PhysicsMaterials/BuildingPhysicsMaterial> (
+                            bindMaterialAs = "weakerThanDescendants"
+                        )
+                        uniform token physics:approximation = "none"
+                        bool physics:collisionEnabled = 1
+                    }
+                }
+
+                over "building_collision_115699811_0"
+                {
+                    over "building_collision_115699811_0" (
+                        prepend apiSchemas = ["PhysicsCollisionAPI", "PhysicsMeshCollisionAPI", "PhysxCollisionAPI", "MaterialBindingAPI"]
+                    )
+                    {
+                        rel material:binding:physics = </World/GNU_Campus/PhysicsMaterials/BuildingPhysicsMaterial> (
+                            bindMaterialAs = "weakerThanDescendants"
+                        )
+                        uniform token physics:approximation = "none"
+                        bool physics:collisionEnabled = 1
+                    }
+                }
+
+                over "building_collision_115699813_0"
+                {
+                    over "building_collision_115699813_0" (
+                        prepend apiSchemas = ["PhysicsCollisionAPI", "PhysicsMeshCollisionAPI", "PhysxCollisionAPI", "MaterialBindingAPI"]
+                    )
+                    {
+                        rel material:binding:physics = </World/GNU_Campus/PhysicsMaterials/BuildingPhysicsMaterial> (
+                            bindMaterialAs = "weakerThanDescendants"
+                        )
+                        uniform token physics:approximation = "none"
+                        bool physics:collisionEnabled = 1
+                    }
+                }
+
+                over "building_collision_115699814_0"
+                {
+                    over "building_collision_115699814_0" (
+                        prepend apiSchemas = ["PhysicsCollisionAPI", "PhysicsMeshCollisionAPI", "PhysxCollisionAPI", "MaterialBindingAPI"]
+                    )
+                    {
+                        rel material:binding:physics = </World/GNU_Campus/PhysicsMaterials/BuildingPhysicsMaterial> (
+                            bindMaterialAs = "weakerThanDescendants"
+                        )
+                        uniform token physics:approximation = "none"
+                        bool physics:collisionEnabled = 1
+                    }
+                }
+
+                over "building_collision_115699816_0"
+                {
+                    over "building_collision_115699816_0" (
+                        prepend apiSchemas = ["PhysicsCollisionAPI", "PhysicsMeshCollisionAPI", "PhysxCollisionAPI", "MaterialBindingAPI"]
+                    )
+                    {
+                        rel material:binding:physics = </World/GNU_Campus/PhysicsMaterials/BuildingPhysicsMaterial> (
+                            bindMaterialAs = "weakerThanDescendants"
+                        )
+                        uniform token physics:approximation = "none"
+                        bool physics:collisionEnabled = 1
+                    }
+                }
+
+                over "building_collision_115699817_0"
+                {
+                    over "building_collision_115699817_0" (
+                        prepend apiSchemas = ["PhysicsCollisionAPI", "PhysicsMeshCollisionAPI", "PhysxCollisionAPI", "MaterialBindingAPI"]
+                    )
+                    {
+                        rel material:binding:physics = </World/GNU_Campus/PhysicsMaterials/BuildingPhysicsMaterial> (
+                            bindMaterialAs = "weakerThanDescendants"
+                        )
+                        uniform token physics:approximation = "none"
+                        bool physics:collisionEnabled = 1
+                    }
+                }
+
+                over "building_collision_115699818_0"
+                {
+                    over "building_collision_115699818_0" (
+                        prepend apiSchemas = ["PhysicsCollisionAPI", "PhysicsMeshCollisionAPI", "PhysxCollisionAPI", "MaterialBindingAPI"]
+                    )
+                    {
+                        rel material:binding:physics = </World/GNU_Campus/PhysicsMaterials/BuildingPhysicsMaterial> (
+                            bindMaterialAs = "weakerThanDescendants"
+                        )
+                        uniform token physics:approximation = "none"
+                        bool physics:collisionEnabled = 1
+                    }
+                }
+
+                over "building_collision_115699819_0"
+                {
+                    over "building_collision_115699819_0" (
+                        prepend apiSchemas = ["PhysicsCollisionAPI", "PhysicsMeshCollisionAPI", "PhysxCollisionAPI", "MaterialBindingAPI"]
+                    )
+                    {
+                        rel material:binding:physics = </World/GNU_Campus/PhysicsMaterials/BuildingPhysicsMaterial> (
+                            bindMaterialAs = "weakerThanDescendants"
+                        )
+                        uniform token physics:approximation = "none"
+                        bool physics:collisionEnabled = 1
+                    }
+                }
+
+                over "building_collision_115857176_0"
+                {
+                    over "building_collision_115857176_0" (
+                        prepend apiSchemas = ["PhysicsCollisionAPI", "PhysicsMeshCollisionAPI", "PhysxCollisionAPI", "MaterialBindingAPI"]
+                    )
+                    {
+                        rel material:binding:physics = </World/GNU_Campus/PhysicsMaterials/BuildingPhysicsMaterial> (
+                            bindMaterialAs = "weakerThanDescendants"
+                        )
+                        uniform token physics:approximation = "none"
+                        bool physics:collisionEnabled = 1
+                    }
+                }
+
+                over "building_collision_115857253_0"
+                {
+                    over "building_collision_115857253_0" (
+                        prepend apiSchemas = ["PhysicsCollisionAPI", "PhysicsMeshCollisionAPI", "PhysxCollisionAPI", "MaterialBindingAPI"]
+                    )
+                    {
+                        rel material:binding:physics = </World/GNU_Campus/PhysicsMaterials/BuildingPhysicsMaterial> (
+                            bindMaterialAs = "weakerThanDescendants"
+                        )
+                        uniform token physics:approximation = "none"
+                        bool physics:collisionEnabled = 1
+                    }
+                }
+
+                over "building_collision_115857255_0"
+                {
+                    over "building_collision_115857255_0" (
+                        prepend apiSchemas = ["PhysicsCollisionAPI", "PhysicsMeshCollisionAPI", "PhysxCollisionAPI", "MaterialBindingAPI"]
+                    )
+                    {
+                        rel material:binding:physics = </World/GNU_Campus/PhysicsMaterials/BuildingPhysicsMaterial> (
+                            bindMaterialAs = "weakerThanDescendants"
+                        )
+                        uniform token physics:approximation = "none"
+                        bool physics:collisionEnabled = 1
+                    }
+                }
+
+                over "building_collision_115857259_0"
+                {
+                    over "building_collision_115857259_0" (
+                        prepend apiSchemas = ["PhysicsCollisionAPI", "PhysicsMeshCollisionAPI", "PhysxCollisionAPI", "MaterialBindingAPI"]
+                    )
+                    {
+                        rel material:binding:physics = </World/GNU_Campus/PhysicsMaterials/BuildingPhysicsMaterial> (
+                            bindMaterialAs = "weakerThanDescendants"
+                        )
+                        uniform token physics:approximation = "none"
+                        bool physics:collisionEnabled = 1
+                    }
+                }
+
+                over "building_collision_524951692_0"
+                {
+                    over "building_collision_524951692_0" (
+                        prepend apiSchemas = ["PhysicsCollisionAPI", "PhysicsMeshCollisionAPI", "PhysxCollisionAPI", "MaterialBindingAPI"]
+                    )
+                    {
+                        rel material:binding:physics = </World/GNU_Campus/PhysicsMaterials/BuildingPhysicsMaterial> (
+                            bindMaterialAs = "weakerThanDescendants"
+                        )
+                        uniform token physics:approximation = "none"
+                        bool physics:collisionEnabled = 1
+                    }
+                }
+
+                over "building_collision_1021680219_0"
+                {
+                    over "building_collision_1021680219_0" (
+                        prepend apiSchemas = ["PhysicsCollisionAPI", "PhysicsMeshCollisionAPI", "PhysxCollisionAPI", "MaterialBindingAPI"]
+                    )
+                    {
+                        rel material:binding:physics = </World/GNU_Campus/PhysicsMaterials/BuildingPhysicsMaterial> (
+                            bindMaterialAs = "weakerThanDescendants"
+                        )
+                        uniform token physics:approximation = "none"
+                        bool physics:collisionEnabled = 1
+                    }
+                }
+
+                over "building_collision_1024125711_0"
+                {
+                    over "building_collision_1024125711_0" (
+                        prepend apiSchemas = ["PhysicsCollisionAPI", "PhysicsMeshCollisionAPI", "PhysxCollisionAPI", "MaterialBindingAPI"]
+                    )
+                    {
+                        rel material:binding:physics = </World/GNU_Campus/PhysicsMaterials/BuildingPhysicsMaterial> (
+                            bindMaterialAs = "weakerThanDescendants"
+                        )
+                        uniform token physics:approximation = "none"
+                        bool physics:collisionEnabled = 1
+                    }
+                }
+
+                over "building_collision_1024125722_0"
+                {
+                    over "building_collision_1024125722_0" (
+                        prepend apiSchemas = ["PhysicsCollisionAPI", "PhysicsMeshCollisionAPI", "PhysxCollisionAPI", "MaterialBindingAPI"]
+                    )
+                    {
+                        rel material:binding:physics = </World/GNU_Campus/PhysicsMaterials/BuildingPhysicsMaterial> (
+                            bindMaterialAs = "weakerThanDescendants"
+                        )
+                        uniform token physics:approximation = "none"
+                        bool physics:collisionEnabled = 1
+                    }
+                }
+
+                over "building_collision_1024125730_0"
+                {
+                    over "building_collision_1024125730_0" (
+                        prepend apiSchemas = ["PhysicsCollisionAPI", "PhysicsMeshCollisionAPI", "PhysxCollisionAPI", "MaterialBindingAPI"]
+                    )
+                    {
+                        rel material:binding:physics = </World/GNU_Campus/PhysicsMaterials/BuildingPhysicsMaterial> (
+                            bindMaterialAs = "weakerThanDescendants"
+                        )
+                        uniform token physics:approximation = "none"
+                        bool physics:collisionEnabled = 1
+                    }
+                }
+
+                over "building_collision_1040566527_0"
+                {
+                    over "building_collision_1040566527_0" (
+                        prepend apiSchemas = ["PhysicsCollisionAPI", "PhysicsMeshCollisionAPI", "PhysxCollisionAPI", "MaterialBindingAPI"]
+                    )
+                    {
+                        rel material:binding:physics = </World/GNU_Campus/PhysicsMaterials/BuildingPhysicsMaterial> (
+                            bindMaterialAs = "weakerThanDescendants"
+                        )
+                        uniform token physics:approximation = "none"
+                        bool physics:collisionEnabled = 1
+                    }
+                }
+
+                over "building_collision_1040566530_0"
+                {
+                    over "building_collision_1040566530_0" (
+                        prepend apiSchemas = ["PhysicsCollisionAPI", "PhysicsMeshCollisionAPI", "PhysxCollisionAPI", "MaterialBindingAPI"]
+                    )
+                    {
+                        rel material:binding:physics = </World/GNU_Campus/PhysicsMaterials/BuildingPhysicsMaterial> (
+                            bindMaterialAs = "weakerThanDescendants"
+                        )
+                        uniform token physics:approximation = "none"
+                        bool physics:collisionEnabled = 1
+                    }
+                }
+
+                over "building_collision_1040566531_0"
+                {
+                    over "building_collision_1040566531_0" (
+                        prepend apiSchemas = ["PhysicsCollisionAPI", "PhysicsMeshCollisionAPI", "PhysxCollisionAPI", "MaterialBindingAPI"]
+                    )
+                    {
+                        rel material:binding:physics = </World/GNU_Campus/PhysicsMaterials/BuildingPhysicsMaterial> (
+                            bindMaterialAs = "weakerThanDescendants"
+                        )
+                        uniform token physics:approximation = "none"
+                        bool physics:collisionEnabled = 1
+                    }
+                }
+            }
+        }
+
+        def Scope "PhysicsMaterials" (
+            customData = {
+                dictionary gnuCampus = {
+                    bool physicsOnly = 1
+                }
+            }
+        )
+        {
+            def Material "GrassPhysicsMaterial" (
+                prepend apiSchemas = ["PhysicsMaterialAPI"]
+            )
+            {
+                float physics:dynamicFriction = 0.4
+                float physics:restitution = 0
+                float physics:staticFriction = 0.6
+            }
+
+            def Material "AsphaltPhysicsMaterial" (
+                prepend apiSchemas = ["PhysicsMaterialAPI"]
+            )
+            {
+                float physics:dynamicFriction = 0.7
+                float physics:restitution = 0
+                float physics:staticFriction = 0.9
+            }
+
+            def Material "BuildingPhysicsMaterial" (
+                prepend apiSchemas = ["PhysicsMaterialAPI"]
+            )
+            {
+                float physics:dynamicFriction = 0.6
+                float physics:restitution = 0
+                float physics:staticFriction = 0.7
+            }
+        }
+    }
+}
